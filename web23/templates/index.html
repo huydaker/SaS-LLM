@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block title %} Changed {% endblock %}
+
+
+{% block content %} 
+
+
+<form action="" method="post" class="form-custom">
+    <h1 align="center" class="h1-design">Music Verse</h1>
+    
+    <!-- <label for="text-solu" class="label-text">Input lyric music </label> -->
+    <textarea class="form-control" cols="8"  id="text-solu" name="text-solu" placeholder="Input lyric music "></textarea>
+    
+    <button type="submit" class="btn custom-btn btn-16">Begin Search</button>
+</form>
+
+
+
+<div class="alert alert-info">
+    <p>{{ chats|safe }}</p>
+</div>
+
+{% endblock%}

@@ -1,0 +1,31 @@
+{% extends "base.html" %} {% block title %} Changed {% endblock %}
+
+{% block content %} 
+    <div class="">
+        <form method="post">
+            <h2 align="center">Search Music</h2>
+            <div class="form-group">
+                <label for="text-solu" >Solution lyric:</label>
+                <!-- <input type="text" class="form-control" id="text-solu" name="text-solu" placeholder="Keyword music"> -->
+                <textarea class="form-control" rows="" id="text-solu" name="text-solu" placeholder="Keyword music"></textarea>
+            </div>
+            
+            <button type="submit" class="btn custom-btn btn-16">Begin Search</button>
+        </form>
+        <h2>list</h2>
+        <div class="alert alert-info">
+            {{ chats.response|safe }}
+
+        </div>
+     
+        
+
+        <!-- <script>
+            let text = document.getElementById("chat").innerHTML;
+            
+            document.getElementById("sp").innerHTML = text;
+        </script> -->
+
+       
+    </div>        
+{% endblock %}

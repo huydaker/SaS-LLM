@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}base{% endblock %}</title>
+    <!-- bootstrap 5 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">        <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/dist/css/bootstrap.min.css')}}" >
+    <!-- <link rel="stylesheet" href="{{url_for('static',filename='assets/dist/css/fontawesome-all.min.css')}}" > -->
+    <!-- <link rel="stylesheet" href="{{url_for('static',filename='assets/dist/css/tooplate-style.css')}}" > -->
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/dist/css/style.css')}}" >
+    
+</head>
+<body>
+    <!-- thanh head chỉ mục lục -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Logo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link"href="#">Beta</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Supermaket</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Guide
+                  </a>
+                </li>
+
+              </ul>
+
+            <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+            <button class="btn btn-primary" type="submit">Login</button>
+              
+            </div>
+          </div>
+    </nav>
+    <!-- thông báo người dùng nhập thành công  -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <!-- thông báo lỗi khi người dùng không nhập -->
+                {% if category == 'error' %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert">
+                            <!-- <span aria-hidden="true">&times;</span> -->
+                        </button>
+                    </div>
+                    <!-- thông báo khi người dùng nhập thành công -->
+                {% elif category == 'success' %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close"  data-bs-dismiss="alert">
+                            <!-- <span aria-hidden="true">&times;</span> -->
+                        </button>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+        {% endif %}
+    {% endwith %}
+   
+    <div class="bg-custom" >
+    </div>
+    
+    <div class="container"> 
+        {% block content %} {% endblock %}
+    </div>
+    
+
+    <script src="{{url_for('static', filename='assets/dist/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/dist/js/jquery-3.2.1.slim.min.js')}}"></script>
+
+</body>
+</html>
